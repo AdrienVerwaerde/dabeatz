@@ -22,9 +22,9 @@ type PurchaseReceiptEmailProps = {
 PurchaseReceiptEmail.PreviewProps = {
   product: {
     name: "Product name",
-    description: "Some description",
+    description: "Product description",
     imagePath:
-      "/products/5aba7442-e4a5-4d2e-bfa7-5bd358cdad64-02 - What Is Next.js.jpg",
+      "/products/47468890-7594-4319-bff6-15cef0c5a89a-wassup-grey-blue.png",
   },
   order: {
     id: crypto.randomUUID(),

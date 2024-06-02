@@ -36,7 +36,7 @@ OrderHistoryEmail.PreviewProps = {
         name: "Product name",
         description: "Some description",
         imagePath:
-          "/products/5aba7442-e4a5-4d2e-bfa7-5bd358cdad64-02 - What Is Next.js.jpg",
+          "/wassup/products/47468890-7594-4319-bff6-15cef0c5a89a-wassup-grey-blue.png",
       },
     },
     {
@@ -48,7 +48,7 @@ OrderHistoryEmail.PreviewProps = {
         name: "Product name 2",
         description: "Some other desc",
         imagePath:
-          "/products/db3035a5-e762-41b0-996f-d54ec730bc9c-01 - Course Introduction.jpg",
+          "/wassup/products/b654148b-e816-4e21-8ada-25cfaaa30db5-wassup-blue-gold.png",
       },
     },
   ],

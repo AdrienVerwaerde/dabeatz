@@ -47,32 +47,21 @@ export default async function SuccessPage({
           <div className="line-clamp-3 text-muted-foreground">
             {product.description}
           </div>
-          <Button className="mt-4" size="lg" asChild>
+          <div className="flex flex-col">
+          <Button className="mt-4 hover:bg-yellow-400" size="lg" asChild>
             {isSuccess ? (
-              <a
-                href={`/products/download/${await createDownloadVerification(
-                  product.id
-                )}`}
-              >
-                Download
-              </a>
+              <a href="/orders" className="hover:text-black">VIEW ORDER</a>
             ) : (
               <Link href={`/products/${product.id}/purchase`}>Try Again</Link>
             )}
           </Button>
+          <Button className="mt-4 bg-sky-600 hover:bg-yellow-400" size="lg" asChild>
+              <a href="/" className="hover:text-black">BACK TO SHOP</a>
+          </Button>
+          </div>
         </div>
       </div>
     </div>
   )
 }
 
-async function createDownloadVerification(productId: string) {
-  return (
-    await db.downloadVerification.create({
-      data: {
-        productId,
-        expiresAt: new Date(Date.now() + 1000 * 60 * 60 * 24),
-      },
-    })
-  ).id
-}

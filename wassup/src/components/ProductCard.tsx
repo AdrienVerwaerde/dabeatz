@@ -29,18 +29,18 @@ export function ProductCard({
   return (
     <Card className="flex overflow-hidden flex-col">
       <div className="relative w-full h-auto aspect-square">
-        <Image src={imagePath} fill alt={name} />
+        <Image src={imagePath} fill alt={name} className="object-cover p-4"/>
       </div>
       <CardHeader>
-        <CardTitle className="text-transfor: uppercase">{name}</CardTitle>
-        <CardDescription>{formatCurrency(priceInCents / 100)}</CardDescription>
+        <CardTitle>{name}</CardTitle>
       </CardHeader>
       <CardContent className="flex-grow">
         <p className="line-clamp-4">{description}</p>
+        <CardDescription>{formatCurrency(priceInCents / 100)}</CardDescription>
       </CardContent>
       <CardFooter>
-        <Button asChild size="lg" className="w-full text-transfor: uppercase">
-          <Link href={`/products/${id}/purchase`}>Purchase</Link>
+        <Button asChild size="lg" className="w-full text-transform: uppercase bg-sky-600 hover:bg-black">
+          <Link href={`/products/${id}/purchase`}>add to cart</Link>
         </Button>
       </CardFooter>
     </Card>
