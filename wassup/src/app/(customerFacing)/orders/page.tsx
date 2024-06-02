@@ -17,7 +17,8 @@ import { useFormState, useFormStatus } from "react-dom"
 export default function MyOrdersPage() {
   const [data, action] = useFormState(emailOrderHistory, {})
   return (
-    <form action={action} className="max-2-xl mx-auto">
+
+    <form action={action} className="max-2-xl m-5">
       <Card>
         <CardHeader>
           <CardTitle>My Orders</CardTitle>
@@ -38,6 +39,7 @@ export default function MyOrdersPage() {
         </CardFooter>
       </Card>
     </form>
+
   )
 }
 
