@@ -5,6 +5,8 @@ import { z } from "zod"
 import fs from "fs/promises"
 import { notFound, redirect } from "next/navigation"
 import { revalidatePath } from "next/cache"
+import { PrismaClient, Category } from '@prisma/client';
+
 
 const fileSchema = z.instanceof(File, { message: "Required" })
 const imageSchema = fileSchema.refine(
@@ -24,12 +26,14 @@ export async function addCategory(prevState: unknown, formData: FormData) {
     const data = result.data
 
     await fs.mkdir("categories", { recursive: true })
-    const filePath = `categories/${crypto.randomUUID()}-${data.file.name}`
-    await fs.writeFile(filePath, Buffer.from(await data.file.arrayBuffer()))
+    const file = formData.get("image") as File
+    const filePath = `categories/${crypto.randomUUID()}-${file.name}`
+    await fs.writeFile(filePath, Buffer.from(await file.arrayBuffer()))
 
     await db.category.create({
         data: {
             name: data.name,
+            imagePath: filePath,
         },
     })
 
@@ -38,6 +42,7 @@ export async function addCategory(prevState: unknown, formData: FormData) {
 
     redirect("/admin/categories")
 }
+
 
 const editSchema = addSchema.extend({
     file: fileSchema.optional(),
@@ -58,13 +63,6 @@ export async function updateCategory(
     const category = await db.category.findUnique({ where: { id } })
 
     if (category == null) return notFound()
-
-    let filePath = category.filePath
-    if (data.file != null && data.file.size > 0) {
-        await fs.unlink(category.filePath)
-        filePath = `categories/${crypto.randomUUID()}-${data.file.name}`
-        await fs.writeFile(filePath, Buffer.from(await data.file.arrayBuffer()))
-    }
 
     let imagePath = category.imagePath
     if (data.image != null && data.image.size > 0) {
@@ -95,9 +93,10 @@ export async function deleteCategory(id: string) {
 
     if (category == null) return notFound()
 
-    await fs.unlink(category.filePath)
-    await fs.unlink(`public${category.imagePath}`)
+    await fs.unlink(`${category.imagePath}`)
 
     revalidatePath("/")
     revalidatePath("/categories")
 }
+
+
