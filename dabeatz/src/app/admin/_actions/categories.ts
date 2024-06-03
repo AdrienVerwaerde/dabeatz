@@ -5,7 +5,7 @@ import { z } from "zod"
 import fs from "fs/promises"
 import { notFound, redirect } from "next/navigation"
 import { revalidatePath } from "next/cache"
-import { PrismaClient, Category } from '@prisma/client';
+import { join } from "path"
 
 
 const fileSchema = z.instanceof(File, { message: "Required" })
@@ -15,6 +15,8 @@ const imageSchema = fileSchema.refine(
 
 const addSchema = z.object({
     name: z.string().min(1),
+    file: fileSchema.refine(file => file.size > 0, "Required"),
+    image: imageSchema.refine(file => file.size > 0, "Required"),
 })
 
 export async function addCategory(prevState: unknown, formData: FormData) {
@@ -27,8 +29,15 @@ export async function addCategory(prevState: unknown, formData: FormData) {
 
     await fs.mkdir("categories", { recursive: true })
     const file = formData.get("image") as File
-    const filePath = `categories/${crypto.randomUUID()}-${file.name}`
-    await fs.writeFile(filePath, Buffer.from(await file.arrayBuffer()))
+    const filePath = join(process.cwd(), `categories/${file.name}`);
+    await fs.writeFile(filePath, Buffer.from(await file.arrayBuffer()));
+
+    await fs.mkdir("public/categories", { recursive: true })
+    const imagePath = join(process.cwd(), `/categories/${data.image.name}`);
+    await fs.writeFile(
+        `public${imagePath}`,
+        Buffer.from(await data.image.arrayBuffer())
+    )
 
     await db.category.create({
         data: {
@@ -64,14 +73,14 @@ export async function updateCategory(
 
     if (category == null) return notFound()
 
-    let imagePath = category.imagePath
+    let imagePath = category.imagePath;
     if (data.image != null && data.image.size > 0) {
-        await fs.unlink(`public${category.imagePath}`)
-        imagePath = `/categories/${crypto.randomUUID()}-${data.image.name}`
+        await fs.unlink(join(process.cwd(), `public/${category.imagePath}`));
+        imagePath = `/categories/${crypto.randomUUID()}-${data.image.name}`;
         await fs.writeFile(
-            `public${imagePath}`,
+            join(process.cwd(), `public${imagePath}`),
             Buffer.from(await data.image.arrayBuffer())
-        )
+        );
     }
 
     await db.category.update({

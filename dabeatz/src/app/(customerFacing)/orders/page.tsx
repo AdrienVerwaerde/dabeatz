@@ -23,7 +23,7 @@ export default function MyOrdersPage() {
         <CardHeader>
           <CardTitle className="pt-2">My Orders</CardTitle>
           <CardDescription>
-            Enter your email and we will email you your order history and
+            Enter your email and we will send you your order history and
             download links
           </CardDescription>
         </CardHeader>
