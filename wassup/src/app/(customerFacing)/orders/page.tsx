@@ -1,5 +1,6 @@
 "use client"
 
+
 import { emailOrderHistory } from "@/actions/orders"
 import { Button } from "@/components/ui/button"
 import {
@@ -17,11 +18,10 @@ import { useFormState, useFormStatus } from "react-dom"
 export default function MyOrdersPage() {
   const [data, action] = useFormState(emailOrderHistory, {})
   return (
-
     <form action={action} className="max-2-xl m-5">
       <Card>
         <CardHeader>
-          <CardTitle>My Orders</CardTitle>
+          <CardTitle className="pt-2">My Orders</CardTitle>
           <CardDescription>
             Enter your email and we will email you your order history and
             download links

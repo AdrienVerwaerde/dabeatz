@@ -1,14 +1,18 @@
 "use client"
 
 import { cn } from "@/lib/utils"
+import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { ComponentProps, ReactNode } from "react"
 
 export function Nav({ children }: { children: ReactNode }) {
   return (
-    <nav className="bg-sky-600 text-primary-foreground flex justify-center px-4">
-      {children}
+    <nav className="bg-white shadow-md flex flex-row justify-between items-center sticky top-0 z-50">
+      <Link href="/">
+        <Image className="p-4" src="/assets/logo-nav.png" alt="logo" width={300} height={21.6} />
+      </Link>
+      <div className="text-primary-foreground flex justify-center px-4">{children}</div>
     </nav>
   )
 }
@@ -19,8 +23,8 @@ export function NavLink(props: Omit<ComponentProps<typeof Link>, "className">) {
     <Link
       {...props}
       className={cn(
-        "p-4 hover:bg-secondary hover:bg-sky-500 focus-visible:bg-secondary focus-visible:text-secondary-foreground",
-        pathname === props.href && "bg-background text-foreground"
+        "text-transform: uppercase font-sans text-black p-4 hover:text-pink-800 focus-visible:bg-white-100 focus-visible:text-secondary-foreground",
+        pathname === props.href && "bg-pink-800 text-white hover:text-white rounded"
       )}
     />
   )

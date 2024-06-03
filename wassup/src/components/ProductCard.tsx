@@ -32,15 +32,15 @@ export function ProductCard({
         <Image src={imagePath} fill alt={name} className="object-cover p-4"/>
       </div>
       <CardHeader>
-        <CardTitle>{name}</CardTitle>
+        <CardTitle className="text-2xl">{name}</CardTitle>
       </CardHeader>
-      <CardContent className="flex-grow">
+      <CardContent className="flex-grow font-mono">
         <p className="line-clamp-4">{description}</p>
-        <CardDescription>{formatCurrency(priceInCents / 100)}</CardDescription>
+        <CardDescription className="font-sans text-2xl">{formatCurrency(priceInCents / 100)}</CardDescription>
       </CardContent>
       <CardFooter>
-        <Button asChild size="lg" className="w-full text-transform: uppercase bg-sky-600 hover:bg-black">
-          <Link href={`/products/${id}/purchase`}>add to cart</Link>
+        <Button asChild size="lg" className="w-full text-transform: uppercase bg-pink-800 hover:bg-black text-2xl flex flex-col justify-center items-center font-sans">
+          <Link href={`/products/${id}/purchase`}>get beats</Link>
         </Button>
       </CardFooter>
     </Card>

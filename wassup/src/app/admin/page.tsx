@@ -62,15 +62,15 @@ export default async function AdminDashboard() {
             />
             <DashboardCard
                 title="Customers"
-                subtitle={`${formatCurrency(
+                subtitle={formatNumber(userData.userCount)}
+                body={`${formatCurrency(
                     userData.averageValuePerUser
                 )} Average Value`}
-                body={formatNumber(userData.userCount)}
             />
             <DashboardCard
                 title="Active Products"
-                subtitle={`${formatNumber(productData.inactiveCount)} Inactive`}
-                body={formatNumber(productData.activeCount)}
+                subtitle={formatNumber(productData.activeCount)}
+                body={`${formatNumber(productData.inactiveCount)} Inactive`}
             />
         </div>
     )
