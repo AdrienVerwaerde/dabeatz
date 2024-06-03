@@ -13,7 +13,8 @@ datasource db {
 model Product {
   id                     String                 @id @default(uuid())
   name                   String
-  category               String
+  categoryId             String                 @id @default(uuid())
+  category    Category? @relation(fields: [categoryId], references: [id])
   priceInCents           Int
   filePath               String
   imagePath              String
@@ -23,6 +24,12 @@ model Product {
   updatedAt              DateTime               @updatedAt
   orders                 Order[]
   downloadVerifications  DownloadVerification[]
+}
+
+model Category {
+  id                     String                 @id @default(uuid())
+  name                   String
+  products               Product[]
 }
 
 model User {

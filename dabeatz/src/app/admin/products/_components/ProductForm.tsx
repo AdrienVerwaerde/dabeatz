@@ -34,6 +34,16 @@ export function ProductForm({ product }: { product?: Product | null }) {
                 {error.name && <div className="text-destructive">{error.name}</div>}
             </div>
             <div className="space-y-2">
+                <Label htmlFor="category">Category</Label>
+                <Input
+                    type="text"
+                    id="category"
+                    name="category"
+                    required
+                    defaultValue={product?.category || ""}
+                />
+            </div>
+            <div className="space-y-2">
                 <Label htmlFor="priceInCents">Price In Cents</Label>
                 <Input
                     type="number"
