@@ -5,11 +5,13 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { formatCurrency } from "@/lib/formatters"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { addProduct, updateProduct } from "../../_actions/products"
 import { useFormState, useFormStatus } from "react-dom"
-import { Product } from "@prisma/client"
+import { Category, Product } from "@prisma/client"
 import Image from "next/image"
+
+
 
 export function ProductForm({ product }: { product?: Product | null }) {
     const [error, action] = useFormState(
@@ -19,6 +21,35 @@ export function ProductForm({ product }: { product?: Product | null }) {
     const [priceInCents, setPriceInCents] = useState<number | undefined>(
         product?.priceInCents
     )
+
+    const [categories, setCategories] = useState<Category[]>([]);
+    const [selectedCategory, setSelectedCategory] = useState<string>(
+        product?.categoryId || ""
+    );
+
+    useEffect(() => {
+        async function fetchCategories() {
+            try {
+                const response = await fetch("/public/categories");
+                if (!response.ok) {
+                    throw new Error("Failed to fetch categories");
+                }
+                const categoriesData = await response.json();
+                setCategories(categoriesData);
+            } catch (error) {
+                console.error("Error fetching categories:", error);
+            }
+        }
+
+        fetchCategories();
+    }, []);
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+        formData.append("categoryId", selectedCategory);
+        await action(formData);
+    };
 
     return (
         <form action={action} className="space-y-8">
@@ -38,9 +69,10 @@ export function ProductForm({ product }: { product?: Product | null }) {
                 <Input
                     type="text"
                     id="category"
-                    name="category"
+                    name="categoryId"
                     required
                     defaultValue={product?.categoryId || ""}
+                    className="ml-2 text-sm"
                 />
             </div>
             <div className="space-y-2">

@@ -21,8 +21,8 @@ export function CategoryCard({
 }: CategoryCardProps) {
     return (
         <Card className="flex overflow-hidden flex-col justify-center items-center">
-            <div className="w-full h-auto aspect-square">
-                <Image src={`/categories/${imagePath}`} alt={name} className="object-cover p-4" width={400} height={400} />
+            <div className="relative w-full h-auto aspect-square">
+                <Image src={`/categories/${imagePath}`} fill alt={name} className="object-contain p-4" />
             </div>
             <CardHeader>
                 <CardTitle className="text-2xl">{name}</CardTitle>
