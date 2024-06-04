@@ -16,9 +16,14 @@ export default function CategoriesPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <Suspense
                 fallback={
-                    <div className="flex justify-center items-center">
-                        <Loader2 className="size-24 animate-spin" />
-                    </div>
+                    <>
+                        <ProductCardSkeleton />
+                        <ProductCardSkeleton />
+                        <ProductCardSkeleton />
+                        <ProductCardSkeleton />
+                        <ProductCardSkeleton />
+                        <ProductCardSkeleton />
+                    </>
                 }
             >
                 <CategoriesSuspense />
@@ -28,7 +33,7 @@ export default function CategoriesPage() {
 }
 
 async function CategoriesSuspense() {
-    const products = await getCategories()
+    const categories = await getCategories()
 
-    return products.map(category => <CategoryCard key={category.id} {...category} />)
+    return categories.map(category => <CategoryCard key={category.id} {...category} />)
 }

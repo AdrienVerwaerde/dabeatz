@@ -35,7 +35,7 @@ export function ProductCard({
         <CardTitle className="text-2xl">{name}</CardTitle>
       </CardHeader>
       <CardContent className="flex-grow font-mono">
-        <p className="line-clamp-4">{description}</p>
+        <p className="line-clamp-4 mb-4">{description}</p>
         <CardDescription className="font-sans text-2xl">{formatCurrency(priceInCents / 100)}</CardDescription>
       </CardContent>
       <CardFooter>
