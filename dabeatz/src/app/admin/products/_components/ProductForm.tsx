@@ -40,7 +40,7 @@ export function ProductForm({ product }: { product?: Product | null }) {
                     id="category"
                     name="category"
                     required
-                    defaultValue={product?.category || ""}
+                    defaultValue={product?.categoryId || ""}
                 />
             </div>
             <div className="space-y-2">

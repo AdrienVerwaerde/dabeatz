@@ -15,7 +15,6 @@ const imageSchema = fileSchema.refine(
 
 const addSchema = z.object({
     name: z.string().min(1),
-    file: fileSchema.refine(file => file.size > 0, "Required"),
     image: imageSchema.refine(file => file.size > 0, "Required"),
 })
 
@@ -27,13 +26,13 @@ export async function addCategory(prevState: unknown, formData: FormData) {
 
     const data = result.data
 
-    await fs.mkdir("categories", { recursive: true })
-    const file = formData.get("image") as File
-    const filePath = join(process.cwd(), `categories/${file.name}`);
-    await fs.writeFile(filePath, Buffer.from(await file.arrayBuffer()));
+    // await fs.mkdir("categories", { recursive: true })
+    // const file = formData.get("image") as File
+    // const filePath = join(process.cwd(), `categories/${file.name}`);
+    // await fs.writeFile(filePath, Buffer.from(await file.arrayBuffer()));
 
     await fs.mkdir("public/categories", { recursive: true })
-    const imagePath = join(process.cwd(), `/categories/${data.image.name}`);
+    const imagePath =`/categories/${data.image.name}`;
     await fs.writeFile(
         `public${imagePath}`,
         Buffer.from(await data.image.arrayBuffer())
@@ -42,7 +41,7 @@ export async function addCategory(prevState: unknown, formData: FormData) {
     await db.category.create({
         data: {
             name: data.name,
-            imagePath: filePath,
+            imagePath: data.image.name,
         },
     })
 
@@ -76,7 +75,7 @@ export async function updateCategory(
     let imagePath = category.imagePath;
     if (data.image != null && data.image.size > 0) {
         await fs.unlink(join(process.cwd(), `public/${category.imagePath}`));
-        imagePath = `/categories/${crypto.randomUUID()}-${data.image.name}`;
+        imagePath = `/categories/${data.image.name}`;
         await fs.writeFile(
             join(process.cwd(), `public${imagePath}`),
             Buffer.from(await data.image.arrayBuffer())
