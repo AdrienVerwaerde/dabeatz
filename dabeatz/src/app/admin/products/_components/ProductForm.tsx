@@ -10,6 +10,7 @@ import { addProduct, updateProduct } from "../../_actions/products"
 import { useFormState, useFormStatus } from "react-dom"
 import { Category, Product } from "@prisma/client"
 import Image from "next/image"
+import CategoryOptions from "@/components/CategoryOptions"
 
 
 
@@ -30,7 +31,7 @@ export function ProductForm({ product }: { product?: Product | null }) {
     useEffect(() => {
         async function fetchCategories() {
             try {
-                const response = await fetch("/public/categories");
+                const response = await fetch("/categories");
                 if (!response.ok) {
                     throw new Error("Failed to fetch categories");
                 }
@@ -40,6 +41,7 @@ export function ProductForm({ product }: { product?: Product | null }) {
                 console.error("Error fetching categories:", error);
             }
         }
+        
 
         fetchCategories();
     }, []);
@@ -66,14 +68,16 @@ export function ProductForm({ product }: { product?: Product | null }) {
             </div>
             <div className="space-y-2">
                 <Label htmlFor="category">Category</Label>
-                <Input
-                    type="text"
+                <select
                     id="category"
-                    name="categoryId"
+                    name="category"
                     required
-                    defaultValue={product?.categoryId || ""}
+                    value={selectedCategory}
+                    onChange={(e) => setSelectedCategory(e.target.value)}
                     className="ml-2 text-sm"
-                />
+                >
+                    <CategoryOptions />
+                </select>
             </div>
             <div className="space-y-2">
                 <Label htmlFor="priceInCents">Price In Cents</Label>

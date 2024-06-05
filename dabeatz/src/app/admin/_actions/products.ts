@@ -11,7 +11,6 @@ const imageSchema = fileSchema.refine(
   file => file.size === 0 || file.type.startsWith("image/")
 )
 
-
 const addSchema = z.object({
   name: z.string().min(1),
   description: z.string().min(1),

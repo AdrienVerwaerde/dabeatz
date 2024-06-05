@@ -134,7 +134,7 @@ function Form({
         </CardContent>
         <CardFooter>
           <Button
-            className="w-full"
+            className="w-full uppercase font-sans text-2xl bg-pink-800 hover:bg-black"
             size="lg"
             disabled={stripe == null || elements == null || isLoading}
           >

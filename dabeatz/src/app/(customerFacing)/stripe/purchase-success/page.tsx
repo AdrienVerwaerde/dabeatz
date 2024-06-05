@@ -48,15 +48,15 @@ export default async function SuccessPage({
             {product.description}
           </div>
           <div className="flex flex-col">
-          <Button className="mt-4 hover:bg-yellow-400" size="lg" asChild>
+          <Button className="mt-4 bg-pink-800 hover:bg-pink-900 font-sans text-xl" size="lg" asChild>
             {isSuccess ? (
-              <a href="/orders" className="hover:text-black">VIEW ORDER</a>
+              <a href="/orders">VIEW ORDER</a>
             ) : (
               <Link href={`/products/${product.id}/purchase`}>Try Again</Link>
             )}
           </Button>
-          <Button className="mt-4 bg-sky-600 hover:bg-yellow-400" size="lg" asChild>
-              <a href="/" className="hover:text-black">BACK TO SHOP</a>
+          <Button className="mt-4 bg-black hover:bg-gray-800 font-sans text-xl" size="lg" asChild>
+              <a href="/">BACK TO SHOP</a>
           </Button>
           </div>
         </div>

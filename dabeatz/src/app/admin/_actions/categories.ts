@@ -26,11 +26,6 @@ export async function addCategory(prevState: unknown, formData: FormData) {
 
     const data = result.data
 
-    await fs.mkdir("categories", { recursive: true })
-    const file = formData.get("image") as File
-    const filePath = join(process.cwd(), `categories/${file.name}`);
-    await fs.writeFile(filePath, Buffer.from(await file.arrayBuffer()));
-
     await fs.mkdir("public/categories", { recursive: true })
     const imagePath =`/categories/${data.image.name}`;
     await fs.writeFile(

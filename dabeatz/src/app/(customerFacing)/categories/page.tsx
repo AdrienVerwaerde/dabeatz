@@ -2,7 +2,6 @@ import { CategoryCard } from "@/components/CategoryCard"
 import { ProductCardSkeleton } from "@/components/ProductCard"
 import db from "@/db/db"
 import { cache } from "@/lib/cache"
-import { Loader2 } from "lucide-react"
 import { Suspense } from "react"
 
 const getCategories = cache(() => {
@@ -10,6 +9,12 @@ const getCategories = cache(() => {
         orderBy: { name: "asc" },
     })
 }, ["/categories", "getCategories"])
+
+async function CategoriesSuspense() {
+    const categories = await getCategories()
+
+    return categories.map(category => <CategoryCard key={category.id} {...category} />)
+}
 
 export default function CategoriesPage() {
     return (
@@ -30,10 +35,4 @@ export default function CategoriesPage() {
             </Suspense>
         </div>
     )
-}
-
-async function CategoriesSuspense() {
-    const categories = await getCategories()
-
-    return categories.map(category => <CategoryCard key={category.id} {...category} />)
 }
