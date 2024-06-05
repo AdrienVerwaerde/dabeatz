@@ -8,7 +8,7 @@ import { ComponentProps, ReactNode } from "react"
 
 export function Nav({ children }: { children: ReactNode }) {
   return (
-    <nav className="bg-white shadow-md flex flex-row justify-between items-center sticky top-0 z-50">
+    <nav className="bg-white shadow-md px-4 flex flex-row justify-between items-center sticky top-0 z-50">
       <Link href="/">
         <Image className="p-4" src="/assets/logo-nav.png" alt="logo" width={300} height={21.6} />
       </Link>
