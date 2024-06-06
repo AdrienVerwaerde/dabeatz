@@ -10,6 +10,7 @@ import { addProduct, updateProduct } from "../../_actions/products"
 import { useFormState, useFormStatus } from "react-dom"
 import { Category, Product } from "@prisma/client"
 import Image from "next/image"
+import CategoryOptions from "@/components/CategoryOptions"
 
 
 

@@ -7,6 +7,7 @@ import {
 import { Button } from "./ui/button"
 import Link from "next/link"
 import Image from "next/image"
+import { lowercase } from "@/lib/utils"
 
 type CategoryCardProps = {
     id: string
@@ -29,7 +30,7 @@ export function CategoryCard({
             </CardHeader>
             <CardFooter>
                 <Button asChild size="lg" className="w-full text-transform: uppercase bg-pink-800 hover:bg-black text-2xl flex flex-col justify-center items-center font-sans mt-2">
-                    <Link href={`/categories/${id}`}>see all {name} beatz</Link>
+                    <Link href={`/categories/${lowercase(name)}`}>see all {name} beatz</Link>
                 </Button>
             </CardFooter>
         </Card>
