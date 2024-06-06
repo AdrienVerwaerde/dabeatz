@@ -9,7 +9,7 @@ export default function Layout({
   children: React.ReactNode
 }>) {
   return (
-    <>
+    <main className="flex flex-col h-screen justify-between">
       <Nav>
         <NavLink href="/">Home</NavLink>
         <NavLink href="/products">Products</NavLink>
@@ -18,6 +18,6 @@ export default function Layout({
       </Nav>
       <div className="container my-6">{children}</div>
       <Footer />
-    </>
+    </main>
   )
 }
