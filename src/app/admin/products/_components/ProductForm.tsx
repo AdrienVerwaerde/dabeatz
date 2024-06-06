@@ -67,19 +67,6 @@ export function ProductForm({ product }: { product?: Product | null }) {
                 {error.name && <div className="text-destructive">{error.name}</div>}
             </div>
             <div className="space-y-2">
-                <Label htmlFor="category">Category</Label>
-                <select
-                    id="category"
-                    name="category"
-                    required
-                    value={selectedCategory}
-                    onChange={(e) => setSelectedCategory(e.target.value)}
-                    className="ml-2 text-sm"
-                >
-                    <CategoryOptions />
-                </select>
-            </div>
-            <div className="space-y-2">
                 <Label htmlFor="priceInCents">Price In Cents</Label>
                 <Input
                     type="number"
