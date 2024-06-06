@@ -71,6 +71,9 @@ function ProductGridSection({
               <ProductCardSkeleton />
               <ProductCardSkeleton />
               <ProductCardSkeleton />
+              <ProductCardSkeleton />
+              <ProductCardSkeleton />
+              <ProductCardSkeleton />
             </>
           }
         >
