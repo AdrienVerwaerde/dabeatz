@@ -10,7 +10,6 @@ import { addProduct, updateProduct } from "../../_actions/products"
 import { useFormState, useFormStatus } from "react-dom"
 import { Category, Product } from "@prisma/client"
 import Image from "next/image"
-import CategoryOptions from "@/components/CategoryOptions"
 
 
 
@@ -22,36 +21,6 @@ export function ProductForm({ product }: { product?: Product | null }) {
     const [priceInCents, setPriceInCents] = useState<number | undefined>(
         product?.priceInCents
     )
-
-    const [categories, setCategories] = useState<Category[]>([]);
-    const [selectedCategory, setSelectedCategory] = useState<string>(
-        product?.categoryId || ""
-    );
-
-    useEffect(() => {
-        async function fetchCategories() {
-            try {
-                const response = await fetch("/categories");
-                if (!response.ok) {
-                    throw new Error("Failed to fetch categories");
-                }
-                const categoriesData = await response.json();
-                setCategories(categoriesData);
-            } catch (error) {
-                console.error("Error fetching categories:", error);
-            }
-        }
-        
-
-        fetchCategories();
-    }, []);
-
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        const formData = new FormData(e.currentTarget);
-        formData.append("categoryId", selectedCategory);
-        await action(formData);
-    };
 
     return (
         <form action={action} className="space-y-8">
