@@ -1,5 +1,6 @@
 
 import Hero from "@/components/Hero"
+import MobileHero from "@/components/MobileHero"
 import { ProductCard, ProductCardSkeleton } from "@/components/ProductCard"
 import { Button } from "@/components/ui/button"
 import db from "@/db/db"
@@ -31,8 +32,9 @@ const getNewestProducts = cache(() => {
 
 export default function HomePage() {
   return (
-    <main className="space-y-12 font-sans">
+    <main className="lg:space-y-12 space-y-4 font-sans lg:container">
       <Hero />
+      <MobileHero />
       <ProductGridSection
         title="Most Popular"
         productsFetcher={getMostPopularProducts}
