@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils"
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 
 export const metadata: Metadata = {
-  title: "DABEATZ",
+  title: "DABEATZ | High Quality Audio Samples",
   description: "High Quality Audio Samples",
 }
 
