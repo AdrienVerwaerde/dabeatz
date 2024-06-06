@@ -2,7 +2,6 @@
 CREATE TABLE "Product" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "name" TEXT NOT NULL,
-    "categoryId" TEXT NOT NULL,
     "priceInCents" INTEGER NOT NULL,
     "filePath" TEXT NOT NULL,
     "imagePath" TEXT NOT NULL,
@@ -10,7 +9,6 @@ CREATE TABLE "Product" (
     "isAvailableForPurchase" BOOLEAN NOT NULL DEFAULT true,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" DATETIME NOT NULL
-
 );
 
 -- CreateTable
@@ -48,6 +46,9 @@ CREATE TABLE "DownloadVerification" (
     "productId" TEXT NOT NULL,
     CONSTRAINT "DownloadVerification_productId_fkey" FOREIGN KEY ("productId") REFERENCES "Product" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Category_name_key" ON "Category"("name");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
