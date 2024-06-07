@@ -24,7 +24,7 @@ import { DeleteDropdownItem } from "./_components/CategoryActions";
 export default function AdminCategoriesPage() {
     return (
         <>
-            <div className="flex justify-between items-center gap-4">
+            <div className="flex justify-between items-center gap-4 font-mono">
                 <PageHeader>Categories</PageHeader>
                 <Button asChild>
                     <Link href="/admin/categories/new">Add Category</Link>
