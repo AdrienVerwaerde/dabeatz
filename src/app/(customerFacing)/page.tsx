@@ -32,14 +32,19 @@ const getNewestProducts = cache(() => {
 
 export default function HomePage() {
   return (
-    <main className="lg:space-y-12 space-y-4 font-sans lg:container">
+    <main className="lg:space-y-12 space-y-4 font-sans">
       <Hero />
       <MobileHero />
+      <section className="container">
       <ProductGridSection
         title="Most Popular"
         productsFetcher={getMostPopularProducts}
+        
       />
-      <ProductGridSection title="Newest" productsFetcher={getNewestProducts} />
+      <ProductGridSection 
+      title="Newest" 
+      productsFetcher={getNewestProducts} />
+      </section>
     </main>
   )
 }

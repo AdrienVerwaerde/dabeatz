@@ -39,7 +39,7 @@ const stripePromise = loadStripe(
 
 export function CheckoutForm({ product, clientSecret }: CheckoutFormProps) {
   return (
-    <div className="max-w-5xl w-full mx-auto space-y-8">
+    <div className="max-w-5xl w-full mx-auto space-y-8 container">
       <div className="flex gap-4 items-center">
         <div className="aspect-square flex-shrink-0 w-1/4 relative">
           <Image

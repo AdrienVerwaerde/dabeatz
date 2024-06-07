@@ -7,7 +7,7 @@ import Image from "next/image"
 export default function Hero() {
     return (
         <>
-            <div className="hidden lg:block">
+            <div className="hidden lg:block lg:container">
                 <Card className="relative overflow-hidden flex flex-col items-center">
                     <div className="w-full h-auto aspect-video relative">
                         <Image src="/assets/hero-img.png" fill alt="hero image" className="object-cover" />

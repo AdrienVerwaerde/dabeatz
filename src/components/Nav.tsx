@@ -2,20 +2,33 @@
 
 import { cn } from "@/lib/utils"
 import Image from "next/image"
-import Link from "next/link"
+import Link, { LinkProps } from "next/link"
 import { usePathname } from "next/navigation"
-import { ComponentProps, ReactNode, useState } from "react"
+import React, { ReactNode, useState, MouseEvent } from "react"
 
-export function Nav({ children }: { children: ReactNode }) {
+interface NavProps {
+  children: ReactNode
+}
+
+interface CustomLinkProps extends LinkProps {
+  onClick?: (event: MouseEvent<HTMLAnchorElement>) => void
+  children: ReactNode
+}
+
+export function Nav({ children }: NavProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleCloseMenu = () => {
+    setMenuOpen(false);
+  };
 
   return (
     <nav className="bg-white shadow-md px-4 flex flex-row justify-between items-center sticky top-0 z-50">
       <Link href="/">
-        <Image className="p-4 md: w-3/4" src="/assets/logo-nav.png" alt="logo" width={300} height={21.6} />
+        <Image className="p-4 w-2/3 md:w-3/4" src="/assets/logo-nav.png" alt="logo" width={300} height={21.6} />
       </Link>
       <div className="hidden md:flex text-primary-foreground justify-center px-4">{children}</div>
-      <button 
+      <button
         className="md:hidden text-pink-800 focus:outline-none p-4"
         onClick={() => setMenuOpen(!menuOpen)}
       >
@@ -24,7 +37,12 @@ export function Nav({ children }: { children: ReactNode }) {
       {menuOpen && (
         <div className="md:hidden absolute top-16 right-4 bg-white shadow-lg border border-gray-200">
           <div className="flex flex-col p-4 space-y-2">
-            {children}
+            {React.Children.map(children, child => {
+              if (React.isValidElement<CustomLinkProps>(child)) {
+                return React.cloneElement(child, { onClick: handleCloseMenu });
+              }
+              return child;
+            })}
           </div>
         </div>
       )}
@@ -32,16 +50,24 @@ export function Nav({ children }: { children: ReactNode }) {
   )
 }
 
-export function NavLink(props: Omit<ComponentProps<typeof Link>, "className">) {
+export function NavLink({ href, onClick, children }: CustomLinkProps) {
   const pathname = usePathname()
+
+  const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    if (onClick) onClick(e)
+  }
+
   return (
-    <Link
-      {...props}
+    <Link href={href} passHref
+
+      onClick={handleClick}
       className={cn(
-        "text-transform: uppercase font-sans text-black p-4 hover:text-pink-800 focus-visible:bg-white-100 focus-visible:text-secondary-foreground text-center flex justify-center items-center md: text-lg",
-        pathname === props.href && "bg-pink-800 text-white hover:text-white rounded"
-      )}
-    />
+        "text-transform: uppercase font-sans text-black p-4 hover:text-pink-800 focus-visible:bg-white-100 focus-visible:text-secondary-foreground text-center flex justify-center items-center md:text-lg",
+        pathname === href && "bg-pink-800 text-white hover:text-white rounded"
+      )}>
+
+      {children}
+
+    </Link>
   )
 }
-

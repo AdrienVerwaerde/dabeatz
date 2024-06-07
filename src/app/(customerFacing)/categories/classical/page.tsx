@@ -5,7 +5,8 @@ import { Suspense } from "react"
 
 const getProducts = cache((productNames: string[]) => {
     return db.product.findMany({
-        where: { isAvailableForPurchase: true,
+        where: {
+            isAvailableForPurchase: true,
             name: { in: productNames },
         },
         orderBy: { name: "asc" },
@@ -15,11 +16,11 @@ const getProducts = cache((productNames: string[]) => {
 export default function PageClassical() {
     const productNames = ["Symfony", "Legendary Power"];
     return (
-        <>
-        <div className="uppercase text-pink-800 font-bold text-lg mt-4 mb-0 lg:mt-0 lg:mb-4 w-fit text-center p-2 rounded-md border-solid border-pink-800 border-2">
-            <h1 >Classical</h1>
+        <main className="container">
+            <div className="uppercase text-pink-800 font-bold text-lg mt-4 mb-0 lg:mt-0 lg:mb-4 w-fit text-center p-2 rounded-md border-solid border-pink-800 border-2">
+                <h1 >Classical</h1>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4 mt-4 lg:mt-0">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 mt-4 lg:mt-0">
                 <Suspense
                     fallback={
                         <>
@@ -31,7 +32,7 @@ export default function PageClassical() {
                     <ProductsSuspense productNames={productNames} />
                 </Suspense>
             </div>
-        </>
+        </main>
     )
 }
 

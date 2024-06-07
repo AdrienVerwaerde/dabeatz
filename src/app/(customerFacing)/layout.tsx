@@ -16,7 +16,7 @@ export default function Layout({
         <NavLink href="/categories">Categories</NavLink>
         <NavLink href="/orders">My Orders</NavLink>
       </Nav>
-      <div className="container lg:my-6">{children}</div>
+      <div className="lg:my-6">{children}</div>
       <Footer />
     </main>
   )

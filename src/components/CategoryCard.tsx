@@ -29,7 +29,7 @@ export function CategoryCard({
                 <CardTitle className="text-2xl">{name}</CardTitle>
             </CardHeader>
             <CardFooter>
-                <Button asChild size="lg" className="w-full text-transform: uppercase bg-pink-800 hover:bg-black text-2xl flex flex-col justify-center items-center font-sans mt-2">
+                <Button asChild size="lg" className="w-full uppercase bg-pink-800 hover:bg-black text-2xl flex flex-col justify-center items-center font-sans mt-2">
                     <Link href={`/categories/${lowercase(name)}`}>see all {name} beatz</Link>
                 </Button>
             </CardFooter>

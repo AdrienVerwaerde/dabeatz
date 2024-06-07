@@ -13,7 +13,7 @@ const getProducts = cache((name: string) => {
 export default function PageClassical() {
     const productName = "Countryside Ballad";
     return (
-        <>
+    <main className="container">
         <div className="uppercase text-pink-800 font-bold text-lg mt-4 mb-0 lg:mt-0 lg:mb-4 w-fit text-center p-2 rounded-md border-solid border-pink-800 border-2">
             <h1>Folk</h1>
             </div>
@@ -28,7 +28,7 @@ export default function PageClassical() {
                     <ProductsSuspense productName={productName} />
                 </Suspense>
             </div>
-        </>
+        </main>
     )
 }
 

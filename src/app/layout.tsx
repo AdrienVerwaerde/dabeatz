@@ -1,10 +1,11 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
+import { Teko } from "next/font/google"
 import "./globals.css"
 import { cn } from "@/lib/utils"
 
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
+const teko = Teko({ subsets: ["latin"], display: 'swap', variable: "--font-sans" })
 
 export const metadata: Metadata = {
   title: "DABEATZ | High Quality Audio Samples",
@@ -21,7 +22,7 @@ export default function RootLayout({
       <body
         className={cn(
           "bg-background min-h-screen font-mono text-xl antialiased",
-          inter.variable
+          teko.variable
         )}
       >
         {children}
