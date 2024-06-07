@@ -4,7 +4,15 @@ import "./globals.css"
 import { cn } from "@/lib/utils"
 
 
-const teko = Teko({ subsets: ["latin"], display: 'swap', variable: "--font-sans" })
+
+
+const teko = Teko({
+  weight: '500', 
+  subsets: ["latin"], 
+  display: 'swap', 
+  variable: '--font-sans' 
+})
+
 
 export const metadata: Metadata = {
   title: "DABEATZ | High Quality Audio Samples",
@@ -29,3 +37,4 @@ export default function RootLayout({
     </html>
   )
 }
+
