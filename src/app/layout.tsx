@@ -1,5 +1,4 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
 import { Teko } from "next/font/google"
 import "./globals.css"
 import { cn } from "@/lib/utils"
@@ -21,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "bg-background min-h-screen font-mono text-xl antialiased",
+          "bg-background min-h-screen text-xl antialiased",
           teko.variable
         )}
       >

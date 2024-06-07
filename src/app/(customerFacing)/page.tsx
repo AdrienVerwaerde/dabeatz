@@ -41,6 +41,8 @@ export default function HomePage() {
         productsFetcher={getMostPopularProducts}
         
       />
+      </section>
+      <section className="container">
       <ProductGridSection 
       title="Newest" 
       productsFetcher={getNewestProducts} />
