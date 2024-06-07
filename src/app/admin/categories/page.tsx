@@ -47,7 +47,7 @@ async function CategoriesTable() {
     if (categories.length === 0) return <p>No categories</p>;
 
     return (
-        <Table>
+        <Table className="font-mono text-lg">
             <TableHeader>
                 <TableRow>
                     <TableHead>Name</TableHead>

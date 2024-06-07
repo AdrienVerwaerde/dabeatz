@@ -27,7 +27,7 @@ import {
 export default function AdminProductsPage() {
     return (
         <>
-            <div className="flex justify-between items-center gap-4">
+            <div className="flex justify-between items-center gap-4 text-lg font-mono">
                 <PageHeader>Products</PageHeader>
                 <Button asChild>
                     <Link href="/admin/products/new">Add Product</Link>
@@ -53,7 +53,7 @@ async function ProductsTable() {
     if (products.length === 0) return <p>No products found</p>
 
     return (
-        <Table>
+        <Table className="text-lg font-mono">
             <TableHeader>
                 <TableRow>
                     <TableHead className="w-0">

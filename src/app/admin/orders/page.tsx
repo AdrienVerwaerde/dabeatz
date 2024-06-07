@@ -44,7 +44,7 @@ async function OrdersTable() {
   if (orders.length === 0) return <p>No sales found</p>
 
   return (
-    <Table>
+    <Table className="text-lg font-mono">
       <TableHeader>
         <TableRow>
           <TableHead>Product</TableHead>

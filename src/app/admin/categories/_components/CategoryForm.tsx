@@ -25,7 +25,7 @@ export function CategoryForm({ category }: { category?: Category }) {
     )
 
     return (
-        <form action={action} className="space-y-8">
+        <form action={action} className="space-y-8 text-lg font-mono">
             <div className="space-y-2">
                 <Label htmlFor="name">Name</Label>
                 <Input
