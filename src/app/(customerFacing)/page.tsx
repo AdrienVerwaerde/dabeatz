@@ -1,5 +1,6 @@
 
 import Hero from "@/components/Hero"
+import InfoBlock from "@/components/InfoBlock"
 import MobileHero from "@/components/MobileHero"
 import { ProductCard, ProductCardSkeleton } from "@/components/ProductCard"
 import { Button } from "@/components/ui/button"
@@ -33,6 +34,7 @@ const getNewestProducts = cache(() => {
 export default function HomePage() {
   return (
     <main className="lg:space-y-12 space-y-4 font-sans">
+      <InfoBlock />
       <Hero />
       <MobileHero />
       <section className="container">
