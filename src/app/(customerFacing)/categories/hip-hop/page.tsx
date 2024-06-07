@@ -17,7 +17,7 @@ export default function PageClassical() {
     return (
         <>
         <div className="uppercase text-pink-800 font-bold text-lg mt-4 mb-0 lg:mt-0 lg:mb-4 w-fit text-center p-2 rounded-md border-solid border-pink-800 border-2">
-            <h1 >Classical</h1>
+            <h1>Hip-hop</h1>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4 mt-4 lg:mt-0">
                 <Suspense
