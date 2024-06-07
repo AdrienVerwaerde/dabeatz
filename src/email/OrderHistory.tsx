@@ -36,7 +36,7 @@ OrderHistoryEmail.PreviewProps = {
         name: "Product name",
         description: "Some description",
         imagePath:
-          "/wassup/products/47468890-7594-4319-bff6-15cef0c5a89a-wassup-grey-blue.png",
+          "/public/products/1aa9991e-81d6-40d1-8d85-cc2d5c3857db-e(2).png",
       },
     },
     {
@@ -48,7 +48,7 @@ OrderHistoryEmail.PreviewProps = {
         name: "Product name 2",
         description: "Some other desc",
         imagePath:
-          "/wassup/products/b654148b-e816-4e21-8ada-25cfaaa30db5-wassup-blue-gold.png",
+          "/public/products/5f4e8718-ee5f-4261-b6db-d4e4dc4d3452-e(6).png",
       },
     },
   ],
