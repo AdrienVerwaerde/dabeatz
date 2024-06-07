@@ -32,7 +32,7 @@ export function ProductCard({
         <Image src={imagePath} fill alt={name} className="object-cover p-4"/>
       </div>
       <CardHeader>
-        <CardTitle className="text-2xl">{name}</CardTitle>
+        <CardTitle className="text-2xl font-sans">{name}</CardTitle>
       </CardHeader>
       <CardContent className="flex-grow font-mono">
         <p className="line-clamp-4 mb-4">{description}</p>

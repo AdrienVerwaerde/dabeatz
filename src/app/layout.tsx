@@ -4,10 +4,8 @@ import "./globals.css"
 import { cn } from "@/lib/utils"
 
 
-
-
 const teko = Teko({
-  weight: '500', 
+  weight: '600', 
   subsets: ["latin"], 
   display: 'swap', 
   variable: '--font-sans' 

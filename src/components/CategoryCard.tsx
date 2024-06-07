@@ -26,7 +26,7 @@ export function CategoryCard({
                 <Image src={`/categories/${imagePath}`} fill alt={name} className="object-contain p-4" />
             </div>
             <CardHeader>
-                <CardTitle className="text-2xl">{name}</CardTitle>
+                <CardTitle className="text-2xl font-mono">{name}</CardTitle>
             </CardHeader>
             <CardFooter>
                 <Button asChild size="lg" className="w-full uppercase bg-pink-800 hover:bg-black text-2xl flex flex-col justify-center items-center font-sans mt-2">
