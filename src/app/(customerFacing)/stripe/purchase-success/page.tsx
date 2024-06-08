@@ -26,7 +26,7 @@ export default async function SuccessPage({
   const isSuccess = paymentIntent.status === "succeeded"
 
   return (
-    <div className="max-w-5xl w-full mx-auto space-y-8">
+    <div className="max-w-5xl w-full mx-auto space-y-8 container">
       <h1 className="text-4xl font-bold font-mono">
         {isSuccess ? "Success!" : "Error!"}
       </h1>

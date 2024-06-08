@@ -21,14 +21,14 @@ export default function MyOrdersPage() {
     <form action={action} className="max-2-xl m-5">
       <Card>
         <CardHeader>
-          <CardTitle className="pt-2">My Orders</CardTitle>
-          <CardDescription>
+          <CardTitle className="pt-2 font-sans text-xl">My Orders</CardTitle>
+          <CardDescription className="font-mono">
             Enter your email and we will send you your order history and
             download links
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="space-y-2">
+          <div className="space-y-2 font-mono">
             <Label htmlFor="email">Email</Label>
             <Input type="email" required name="email" id="email" />
             {data.error && <div className="text-destructive">{data.error}</div>}
